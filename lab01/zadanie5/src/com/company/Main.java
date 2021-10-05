@@ -31,10 +31,10 @@ public class Main {
         int automorficzna = num * num;
         int size = wielkosc(num);
 
-        if(automorficzna%Math.pow(10,size) == num){
-            return true;
-        }else{
+        if(automorficzna % Math.pow(10, size) == num) {
             return false;
+        } else {
+            return true;
         }
     }
 }
