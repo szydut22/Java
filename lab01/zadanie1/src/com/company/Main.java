@@ -23,13 +23,11 @@ public class Main {
             if(tab[i] < min){
                 min = tab[i];
             }
-        }
-
-        for(int i = 0; i < size; i++) {
             if(tab[i] > max){
                 max = tab[i];
             }
         }
+        
         System.out.println("Min z twoich liczb to: " +min);
         System.out.println("Max z twoich liczb to: " +max);
     }
