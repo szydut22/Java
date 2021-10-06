@@ -30,6 +30,6 @@ public class Main {
         if(num == 0){
             return 1;
         }
-        return (num*silniaRekur(num-1));
+        return (num * silniaRekur(num-1));
     }
 }

@@ -27,7 +27,7 @@ public class Main {
                 max = tab[i];
             }
         }
-        
+
         System.out.println("Min z twoich liczb to: " +min);
         System.out.println("Max z twoich liczb to: " +max);
     }

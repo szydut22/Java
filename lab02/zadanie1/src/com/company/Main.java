@@ -16,7 +16,7 @@ public class Main {
 
 			if(i > 2 && i < n){
 				System.out.print("*");
-//
+
 				for(int l = 0; l < pom; l++){
 					System.out.print(" ");
 				}

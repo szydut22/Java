@@ -28,10 +28,10 @@ public class Main {
     }
 
     static boolean czyAutomorficzna(int num){
-        int automorficzna = num * num;
+        int kwadrat = num * num;
         int size = wielkosc(num);
 
-        if(automorficzna % Math.pow(10, size) == num) {
+        if(kwadrat % Math.pow(10, size) == num) {
             return false;
         } else {
             return true;
