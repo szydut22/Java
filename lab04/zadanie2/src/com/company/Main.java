@@ -6,14 +6,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Main {
-    private static void fill_the_board_with_zeroes(int[][] board, int n) {// funkcja wypelniajaca tablice 2d zerami
-        for (int i = 0; i < n; i++){
-            for(int j = 0; j < n; j++){
-                board[i][j] = 0;
-            }
-        }
-    }
-
     private static void fill_the_board(int[][] board, int n) { //funkcja sluzaca do rozlokowania komorek zywych i martwych
         int start = Math.round((float)((n * n)/3));
         int[][] tabPom = new int[start][1];
@@ -49,90 +41,124 @@ public class Main {
         }
     }
 
-    private static void make_cells_alive(int[][] board, int n){ //funkcja tworzaca z komorek martwych komorki zywe
-        int counter;
-        for(int x = 0; x < n; x++){
-            for(int y = 0; y < n; y++){
-                for(int i = x; i < n; i++){
-                    for(int j = y; j < n; j++){
-                        if(board[i-1][j] == 1){
-
-                        }
-                        if(board[i-1][j+1] == 1){
-
-                        }
-                        if(board[i][j+1] == 1){
-
-                        }
-                        if(board[i+1][j+1] == 1){
-
-                        }
-                        if(board[i+1][j] == 1){
-
-                        }
-                        if(board[i+1][j-1] == 1){
-
-                        }
-                        if(board[i][j-1] == 1){
-
-                        }
-                        if(board[i+1][j-1] == 1){
-
-                        }
+    private static void make_cells_alive(int[][] board, int n) { //funkcja tworzaca z komorek martwych komorki zywe
+        int counter = 0;
+        int[][] boardPom = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if(board[i][j] == 0){
+                    if( i >= 1 && board[i - 1][j] == 1){
+                        counter++;
                     }
+                    if(i - 1 >= 0 && j + 1 <= n && board[i - 1][j + 1] == 1) {
+                        counter++;
+                    }
+                    if(j + 1 <= n && board[i][j + 1] == 1) {
+                        counter++;
+                    }
+                    if(i + 1 <= n && j + 1 <= n && board[i + 1][j + 1] == 1) {
+                        counter++;
+                    }
+                    if(i + 1 <= n && board[i + 1][j] == 1) {
+                        counter++;
+                    }
+                    if(i + 1 <= n && j - 1 >= 0 && board[i + 1][j - 1] == 1) {
+                        counter++;
+                    }
+                    if(j - 1 >= 0 && board[i][j - 1] == 1) {
+                        counter++;
+                    }
+                    if(i - 1 >= 0 && j - 1 >= 0 && board[i - 1][j - 1] == 1) {
+                        counter++;
+                    }
+
+                    if (counter == 3) {
+                        boardPom[i][j] = 1;
+                        counter = 0;
+                    }
+                }
+                if(board[i][j] == 1){ // jezeli komorka jest zywa i sprawdzamy czy nie zmieni sie w martwa
+                    if( i >= 1 && board[i - 1][j] == 1){
+                        counter++;
+                    }
+                    if(i - 1 >= 0 && j + 1 <= n && board[i - 1][j + 1] == 1) {
+                        counter++;
+                    }
+                    if(j + 1 <= n && board[i][j + 1] == 1) {
+                        counter++;
+                    }
+                    if(i + 1 <= n && j + 1 <= n && board[i + 1][j + 1] == 1) {
+                        counter++;
+                    }
+                    if(i + 1 <= n && board[i + 1][j] == 1) {
+                        counter++;
+                    }
+                    if(i + 1 <= n && j - 1 >= 0 && board[i + 1][j - 1] == 1) {
+                        counter++;
+                    }
+                    if(j - 1 >= 0 && board[i][j - 1] == 1) {
+                        counter++;
+                    }
+                    if(i - 1 >= 0 && j - 1 >= 0 && board[i - 1][j - 1] == 1) {
+                        counter++;
+                    }
+                    if (counter < 2 || counter > 3) {
+                        boardPom[i][j] = 1;
+                    }else{
+                        boardPom[i][j] = 0;
+                    }
+                    counter = 0;
                 }
             }
         }
-    }
-
-    private static void make_cells_dead(int[][] board, int n) { //funkcja sluzaca do zmiany komorek zywych w martwe gdy maja mniej lub wiecej niz 2 lub 3 sasiadow
+        printTab(boardPom, n);
     }
 
     private static void printTab(int[][] board, int n){// funkcja sluzaca do wypisania calej tablicy
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < n; j++){
-                System.out.print(board[i][j]+ " ");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(board[i][j] + " ");
             }
             System.out.println();
         }
     }
 
-    public static void main(String[] args) { //głowna funkcja: deklaracja tablicy 2d
+    public static void main(String[] args){ //głowna funkcja: deklaracja tablicy 2d
         Scanner s = new Scanner(System.in);
 
         System.out.println("Podaj wymiar tablicy");
         int n = 3;
 
         int[][] board = new int[n][n];
-        int nn = (n*10)+n;
+        int nn = (n * 10) + n;
+        fill_the_board(board, n);
+        printTab(board, n);
+        System.out.println();
+        make_cells_alive(board, n);
 
 
 
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
-            int counter = 0;
-            @Override
-            public void run() {
-                if(counter == 0){
-                    fill_the_board_with_zeroes(board, n);
-                    printTab(board, n);
-                    counter++;
-                }else if(counter == 1){
-                    fill_the_board(board, n);
-                    printTab(board, n);
-                    counter++;
-                }else if(counter > 1){
+//            Timer timer = new Timer();
+//            TimerTask task = new TimerTask() {
+//                int counter = 0;
+//
+//                @Override
+//                public void run() {
+//                    if (counter == 0) {
+//                        printTab(board, n);
+//                        counter++;
+//                    } else if (counter == 1) {
+//                        fill_the_board(board, n);
+//                        printTab(board, n);
+//                        counter++;
+//                    } else if (counter > 1) {
+//                        make_cells_alive(board, n);
+//                        printTab(board, n);
+//                    }
+//                }
+//            };
 
-                }
-            }
-        };
-
-        timer.schedule(task, 0, 2*1000);
+//            timer.schedule(task, 0, 2 * 1000);
     }
-
-
-
-
-
-
 }
+
