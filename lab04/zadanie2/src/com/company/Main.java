@@ -6,8 +6,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Main {
-    //dopisz warunek w ktorym bedziesz sprawdzal czy tablica nie jest cala martwa wtedy koncz dzialanie!
-
+    private static void newFunction(){
+        
+    }
     private static void fill_the_board(int[][] board, int n) { //funkcja sluzaca do rozlokowania komorek zywych i martwych (komorki martwe oznaczaja 0, a komorki zywe 1)
         int start = Math.round((float)((n * n)/3)); //wyliczenie 30% komorek dla podanego rozmiaru planszy
         Random rand = new Random();
