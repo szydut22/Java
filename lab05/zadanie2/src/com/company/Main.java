@@ -8,7 +8,6 @@ public class Main {
 
         double iloczynS;
         Wektor3D iloczynW;
-        String n;
 
         iloczynS = Wektor3D.iloczynSkalarny(wektor1, wektor2);
         iloczynS = Wektor3D.iloczynSkalarny(wektor2, wektor3);
