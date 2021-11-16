@@ -1,10 +1,29 @@
 package com.company;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-	    Wektor3D wektor1 = new Wektor3D(2.2,5.3,9.5); //tworze obiekt pierwszego wektora
-        Wektor3D wektor2 = new Wektor3D(2.9,3.4,7.4); //tworze obiekt drugiego wektora
-        Wektor3D wektor3 = new Wektor3D(1.3,5.9,6.6); //tworze obiekt trzeciego wektora
+        Scanner s = new Scanner(System.in);
+        double x1,x2,x3;
+
+        System.out.println("Podaj wspolrzedne 1 wektora: ");
+        x1 = s.nextDouble();
+        x2 = s.nextDouble();
+        x3 = s.nextDouble();
+        Wektor3D wektor1 = new Wektor3D(x1,x2,x3);//tworze obiekt pierwszego wektora
+
+        System.out.println("Podaj wspolrzedne 2 wektora: ");
+        x1 = s.nextDouble();
+        x2 = s.nextDouble();
+        x3 = s.nextDouble();
+        Wektor3D wektor2 = new Wektor3D(x1,x2,x3);//tworze obiekt drugiego wektora
+
+        System.out.println("Podaj wspolrzedne 3 wektora: ");
+        x1 = s.nextDouble();
+        x2 = s.nextDouble();
+        x3 = s.nextDouble();
+        Wektor3D wektor3 = new Wektor3D(x1,x2,x3);//tworze obiekt trzeciego wektora
 
         Czworoscian czw = new Czworoscian(wektor1,wektor2,wektor3); //tworze obiekt czw klasy czwroscian, przekazuje mu 3 obiekty klasy Wektor3D
 

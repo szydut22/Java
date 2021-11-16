@@ -19,12 +19,16 @@ public class Czworoscian{
         return V;//zwracam objetosc czworoscianu
     }
 
-    public void wypiszCzworoscian(){//funkcja wypisujaca wspolrzedne wektorow v1,v2,v3 oraz wypisujaca objetosc czworoscianu wyliczona na podstawie tych 3 wektorow
+    /**
+     * funkcja wypisujaca wspolrzedne wektorow v1,v2,v3 oraz wypisujaca objetosc czworoscianu wyliczona na podstawie tych 3 wektorow
+     * @return the sdsds
+     */
+    public void wypiszCzworoscian(){
         System.out.println();
         System.out.println("Wspolrzedne wektora 1: " + v1);
         System.out.println("Wspolrzedne wektora 2: " + v2);
         System.out.println("Wspolrzedne wektora 3: " + v3);
         System.out.println();
-        System.out.println("Objetosc czworoscianu wynosi: " + jakaObjetosc());
+        System.out.format("Objetosc czworoscianu wynosi: %.2f" , jakaObjetosc());
     }
 }

@@ -3,8 +3,6 @@ package com.company;
 public class Wektor3D {
     private double a,b,c;//deklaracja 3 wspolrzednych typu double
 
-    Wektor3D(){}//pusty konstruktor potrzebny przy tworzeniu nowego obiektu w linii 24
-
     public Wektor3D(double a,double b,double c){ //konstruktor inicjalizujący 3 podane zmienne
         this.a = a;
         this.b = b;
@@ -21,18 +19,19 @@ public class Wektor3D {
     }
 
     public static Wektor3D iloczynWektorowy(Wektor3D w1, Wektor3D w2){//obliczanie iloczynu wektorowego na podstawie dwoch obiektow typu Wektor3D
-        Wektor3D wektor = new Wektor3D();//tworzenie nowego obiektu wektor typu Wektor3D do ktorego bede wpisywal wspolrzedne powstalego wektora
+        double a = 0,b = 0,c = 0; //deklaracja 3 zmiennych lokalnych
 
-        wektor.a = (w1.b * w2.c) - (w1.c * w2.b);
-        wektor.b = (w1.c * w2.a) - (w1.a * w2.c);
-        wektor.c = (w1.a * w2.b) - (w1.b * w2.a);
+        a = (w1.b * w2.c) - (w1.c * w2.b); //wyliczanie pierwszej wspolrzednej wektora
+        b = (w1.c * w2.a) - (w1.a * w2.c); //wyliczanie drugiej wspolrzednej wektora
+        c = (w1.a * w2.b) - (w1.b * w2.a); //wyliczanie trzeciej wspolrzednej wektora
 
-        return wektor;//zwracam obiekt
+        Wektor3D wektor = new Wektor3D(a,b,c); //tworzenie nowego obiektu wektor o wspolrzednych a,b,c
+        return wektor;
     }
 
     @Override
     public String toString(){//funkcja to string wypisujaca wspolrzedne wektorow
-        return String.format("x1 = %f, x2 = %f, x3 = %f", a, b, c);
+        return String.format("x1 = %.2f, x2 = %.2f, x3 = %.2f", a, b, c); //%.2f oznacza wyspisywanie do 2 miejsc po przecinku 
 
     }
 }
