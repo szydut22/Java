@@ -26,7 +26,7 @@ public class Person{
         for(int i = 0; i < array.length && changed; i++) {//petla iteruje sie do wielkosci tablicy people oraz changed
             changed = false;
             for(int j = 0; j < array.length - i - 1; j++){
-                if(comp.compareTo(array[j], array[j+1]) > 0){//jezeli wynik porownywania jest wiekszy od 0 wtedy wykona sie podmiana indexow porownywanych osob
+                if(comp.compareTo(array[j], array[j+1]) > 0){//jezeli wynik porownywania jest rozny wtedy wykona sie podmiana indexow porownywanych osob
                     Person tmp = array[j];
                     array[j] = array[j+1];
                     array[j+1] = tmp;
