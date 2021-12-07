@@ -4,15 +4,15 @@ public class main {
 
     public static void main(String[] args){
         Random rand = new Random();
-        int max = 10000;
-        int min = -10000;
+        float max = 10000;
+        float min = -10000;
         float[] balanceTab = new float[10];
 
         System.out.println("ACCNO  CUSTOMER  BALANCE");
         for(int i = 0; i < 5; i++){
             int bankNumber = 1000 + i;
             String surname = "Owner " + i;
-            float balance = (float)rand.nextInt(max - min) + min;
+            float balance = max + rand.nextFloat() * (min - max);
             balanceTab[i] = balance;
 
             AccountInfo accInfo = new AccountInfo(bankNumber, surname, balance);
