@@ -15,7 +15,6 @@ public class Mrowka implements Runnable {
     public void moveToStartingRandomPosition(){
         int x2 = rand.nextInt(n);
         int y2 = rand.nextInt(n);
-
         Boolean res = board.takePosition(x, y, x2, y2);
         if(res == true){
             x = x2;
