@@ -1,52 +1,44 @@
-import java.util.Random;
-
-public class Mrowka implements Runnable {
-    Random rand = new Random();
+public class Mrowka implements Runnable {//klasa mrowki
     Board board;
-    int x,y,n;
-    int name;
+    Position pos;
+    int n;
 
-    Mrowka(Board plansza, int i) {
+    Mrowka(Board plansza) {//kontruktor inicializujacy
         this.board = plansza;
         this.n = board.n;
-        this.name = i;
     }
 
-    public void moveToStartingRandomPosition(){
-        int x2 = rand.nextInt(n);
-        int y2 = rand.nextInt(n);
-        Boolean res = board.takePosition(x, y, x2, y2);
+    public void moveToStartingRandomPosition(){//ustawianie mrowek na planszy podczas pierwszego ruchu
+        pos = new Position(n);
+        Position newPos = new Position(n);
+        Boolean res = board.takePosition(pos, newPos);
         if(res == true){
-            x = x2;
-            y = y2;
+            pos = newPos;
         }
     }
 
-    public void moveToNextPosition(){
-        int x2 = x + rand.nextInt(1-(-1))+0;
-        int y2 = y + rand.nextInt(1-(-1))+0;
-
-        Boolean res = board.takePosition(x, y, x2, y2);
+    public void moveToNextPosition(){//ustawianie mrowek na planszy w kolejnych etapach
+        pos = new Position(n);
+        Position newPos = new Position(pos);
+        Boolean res = board.takePosition(pos, newPos);
         if(res == true){
-            x = x2;
-            y = y2;
+            pos = newPos;
         }
     }
 
     @Override
     public void run() {
         try {
-            moveToStartingRandomPosition();
+            moveToStartingRandomPosition();//rozmieszczam watki na planszy po raz pierwszy po czym je usypiam
             while(true){
                 Thread.sleep(1000);
-                moveToNextPosition();
+                moveToNextPosition();//ustawianie mrowki w kolejnych ruchach
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }catch(ArrayIndexOutOfBoundsException e){
-            System.out.println("umieram");
-            board.releaseCell(x,y);
-            Thread.currentThread().interrupt();
+        }catch(ArrayIndexOutOfBoundsException e){//wyjatek gdy wyjdziemy poza nasza plansze
+            board.releaseCell(pos);// zmieniam aktualna komorke na pusta
+            Thread.currentThread().interrupt();//koncze prace watku
         }
     }
 }
