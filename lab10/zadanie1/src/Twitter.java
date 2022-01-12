@@ -7,7 +7,7 @@ public class Twitter extends Network{
     boolean logIn(String userName, String password) {
         if(super.getUserName().equals(userName) && super.getPassword().equals(password)){
             System.out.println("Zalogowano poprawnie");
-            System.out.println("Witamy w Twitterze " + super.getUserName());
+            System.out.println("Witamy " + super.getUserName());
             return true;
         }
         System.out.println("Podany zly login lub haslo");
@@ -16,11 +16,11 @@ public class Twitter extends Network{
 
     @Override
     void logOut() {
-        System.out.println("Wylogowany");
+        System.out.println("Wylogowuje...");
     }
 
     @Override
     void sendData(String data) {
-
+        System.out.println(data);
     }
 }

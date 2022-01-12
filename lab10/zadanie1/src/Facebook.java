@@ -7,7 +7,7 @@ public class Facebook extends Network{
     boolean logIn(String userName, String password) {
         if(super.getUserName().equals(userName) && super.getPassword().equals(password)){
             System.out.println("Zalogowano poprawnie");
-            System.out.println("Witamy w Facebooku " + super.getUserName() + ", dzisiejsza data: ");
+            System.out.println("Witamy " + super.getUserName());
             return true;
         }
         System.out.println("Podano zly login lub haslo");
@@ -21,7 +21,7 @@ public class Facebook extends Network{
 
     @Override
     void sendData(String data) {
-
+        System.out.println(data);
     }
 
 }

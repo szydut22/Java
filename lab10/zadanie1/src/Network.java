@@ -1,6 +1,9 @@
+import java.util.Scanner;
+
 public abstract class Network {
-    private String userName;
-    private String password;
+    private final String userName;
+    private final String password;
+    Scanner s = new Scanner(System.in);
 
     public Network(String userName, String password) {
         this.userName = userName;
@@ -11,8 +14,15 @@ public abstract class Network {
     abstract void logOut();
     abstract void sendData(String data);
 
-    public void post(String message) {
-
+    public void post(String message) {//za message dostaje nazwe podklasy do ktorej sie loguje w danej chwili
+        System.out.print("Login: ");
+        String login = s.nextLine();
+        System.out.print("Haslo: ");
+        String haslo = s.nextLine();
+        if(logIn(login, haslo)){
+            sendData(message);
+            logOut();
+        }
     }
 
     public String getUserName() {
