@@ -4,8 +4,8 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("Logowanie do Facebooka: ");
-        Facebook Facebook = new Facebook("Szymon", "ala123");
-        Facebook.post("facebook");
+        Facebook Facebook = new Facebook("Szymon", "ala123");//tworzenie obiektu klasy Facebook ktora dziedziczy po klasie Network, podaje mu na wejscie ustalone wczesniej haslo i login
+        Facebook.post("facebook");//wywolanie metody obiektu
 
         System.out.println();
 

@@ -1,4 +1,4 @@
-public class Twitter extends Network{
+public class Twitter extends Network{//klasa dziedziczaca po klasie abtrakcyjnej Network
     public Twitter(String userName, String password) {
         super(userName, password);
     }
