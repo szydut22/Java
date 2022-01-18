@@ -1,34 +1,46 @@
 import java.util.LinkedList;
 
-public class StackUsingLinkedList <E> extends LinkedList<E>{
-    private E e;
+public class StackUsingLinkedList <E>extends LinkedList<E> {
+    LinkedList<E> stack = new LinkedList<>();
 
-    public StackUsingLinkedList(E type) {
-        this.e = type;
+    public StackUsingLinkedList() {
     }
 
     @Override
     public boolean isEmpty() {
-        return super.isEmpty();
+        return stack.isEmpty();
     }
 
     @Override
     public E peek() {
-        return super.peek();
+        return stack.peek();
     }
 
     @Override
     public E pop() {
-        return super.pop();
+        return stack.pop();
     }
 
     @Override
     public void push(E e) {
-        super.push(e);
+        stack.push(e);
     }
 
     @Override
     public int size() {
-        return super.size();
+        return stack.size();
+    }
+
+    public void addStackElement(E e) {
+        stack.add(e);
+    }
+
+    @Override
+    public String toString() {
+        return "stack=" + stack;
+    }
+
+    public LinkedList<E> getStack() {
+        return stack;
     }
 }
